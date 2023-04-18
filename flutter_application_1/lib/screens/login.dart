@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/utils/color_palette.dart';
 
@@ -9,13 +10,86 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool userRegister = false;
   TextEditingController controllerName =
-      TextEditingController(text: "Eduardo Luiz Pontes de Souza");
+      TextEditingController(text: "Lucas Silva");
   TextEditingController controllerEmail =
-      TextEditingController(text: "eduardo.pontes2801@gmail.com");
+      TextEditingController(text: "lucasSilva@gmail.com");
   TextEditingController controllerPassword =
-      TextEditingController(text: "1234567");
+      TextEditingController(text: "12345678");
+  bool userRegister = false;
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  fieldValidation() async {
+    String name = controllerName.text;
+    String email = controllerEmail.text;
+    String password = controllerPassword.text;
+
+    if (email.isNotEmpty && email.contains("@")) {
+      if (password.isNotEmpty && password.length >= 8) {
+        if (userRegister) {
+          if (name.isNotEmpty && name.length >= 3) {
+            await auth
+                .createUserWithEmailAndPassword(
+                    email: email, password: password)
+                .then((value) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Login realizado com sucesso"),
+                  backgroundColor: ColorPallete.backgroundColor2,
+                ),
+              );
+              // ignore: avoid_print
+              print("UID do usuário: ${value.user!.uid}");
+              // ignore: avoid_print
+              print("Email: $email");
+              // ignore: avoid_print
+              print("Senha: $password");
+            }).catchError((error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Erro ao realizar o login"),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            });
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Nome inválido"),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("Login realizado com sucesso"),
+              backgroundColor: ColorPallete.backgroundColor2,
+            ),
+          );
+          // ignore: avoid_print
+          print("Email: $email");
+          // ignore: avoid_print
+          print("Senha: $password");
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Senha inválida"),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Email inválido"),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -210,7 +284,9 @@ class _LoginState extends State<Login> {
                           SizedBox(
                             width: double.infinity,
                             child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  fieldValidation();
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
                                       ColorPallete.backgroundColor2,
