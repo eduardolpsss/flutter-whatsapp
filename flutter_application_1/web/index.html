@@ -1,70 +1,69 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <base href="$FLUTTER_BASE_HREF">
+<html lang="en">
+  <head>
+    <base href="$FLUTTER_BASE_HREF" />
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="description" content="A new Flutter project." />
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="flutter_application_1" />
+    <link rel="apple-touch-icon" href="icons/Icon-192.png" />
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="flutter_application_1">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <title>flutter_application_1</title>
+    <link rel="manifest" href="manifest.json" />
 
-  <title>flutter_application_1</title>
-  <link rel="manifest" href="manifest.json">
-
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
-</head>
-<body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
-        }
+    <script>
+      // The value below is injected by flutter build, do not touch.
+      var serviceWorkerVersion = null;
+    </script>
+    <!-- This script adds the flutter initialization JS code -->
+    <script src="flutter.js" defer></script>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("load", function (ev) {
+        // Download main.dart.js
+        _flutter.loader.loadEntrypoint({
+          serviceWorker: {
+            serviceWorkerVersion: serviceWorkerVersion,
+          },
+          onEntrypointLoaded: function (engineInitializer) {
+            engineInitializer.initializeEngine().then(function (appRunner) {
+              appRunner.runApp();
+            });
+          },
+        });
       });
-    });
-  </script>
+    </script>
 
-  <!-- The script tag below is used to inject the Firebase SDK. Each app has its own config so you can replace the config variable below with your app's config object. See https://firebase.google.com/docs/web/setup#config-object -->
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-    import { } from "https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"
-    import { } from "https://www.gstatic.com/firebasejs8.8.1/firebase-firestore.js"
-    import { } from "https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js"
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+      import { getAuth } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js";
+      import { getStorage } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-storage.js";
 
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDfDJpwQ_jVZrqKdBl4ykgm70p6jb801ts",
-      authDomain: "whatsapp-c221b.firebaseapp.com",
-      projectId: "whatsapp-c221b",
-      storageBucket: "whatsapp-c221b.appspot.com",
-      messagingSenderId: "199116646017",
-      appId: "1:199116646017:web:f39e5095eb9c94efd7cf80"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-  </script>
-</body>
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCCjd09xbB9uhLdcUb5IwY1iii7clzhyuQ",
+        authDomain: "whatsapp-web-18168.firebaseapp.com",
+        projectId: "whatsapp-web-18168",
+        storageBucket: "whatsapp-web-18168.appspot.com",
+        messagingSenderId: "110274997235",
+        appId: "1:110274997235:web:20ebbb156e2f7fe0bdc086",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+    </script>
+  </body>
 </html>
